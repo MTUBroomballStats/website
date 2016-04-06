@@ -1,0 +1,3 @@
+[02-Mar-2015 07:51:52 America/Chicago] PHP Fatal error:  Class 'Walker' not found in /home3/whweaver/public_html/willweaver.net/wp-includes/nav-menu-template.php on line 16
+[02-Mar-2015 07:51:54 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home3/whweaver/public_html/willweaver.net/wp-includes/general-template.php on line 1760
+[02-Mar-2015 07:51:55 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home3/whweaver/public_html/willweaver.net/wp-includes/author-template.php on line 454

@@ -1,0 +1,1 @@
+[08-Dec-2015 05:05:15 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home3/whweaver/public_html/willweaver.net/wp-content/themes/convac-lite/404.php on line 7

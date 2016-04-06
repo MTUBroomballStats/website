@@ -1,0 +1,177 @@
+body {
+	margin: 0px;
+	background: #303030;
+}
+
+#page_container {
+	width: 980px;
+	height: 100%;
+	margin: auto;
+}
+
+#page_header {
+	position: relative;
+	width: 100%;
+	height: 75px;
+}
+
+#logo {
+	position: relative;
+	left: 0px;
+	top: 5px;
+	height: 75px;
+}
+
+#templogo {
+	font-size: 50px;
+	font-family: verdana, helvetic, arial, sans-serif;
+	color: #ffb806;
+}
+
+#top_menu_bar {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	background: #d0d0d0;
+	color: #000000;
+	height: 30px;
+	text-align: center;
+	font-family: verdana, helvetic, arial, sans-serif;
+	font-size: 16px;
+}
+
+a {
+	text-decoration: none;
+}
+
+a.menu_option {
+	position: relative;
+	padding-left: 80px;
+	padding-right: 80px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	top: 6px;
+	color: #000000;
+	font-family: verdana, helvetica, arial, sans-serif;
+}
+
+div.sub_menu_bar {
+	position: relative;
+	left: 0px;
+	width: 100%;
+	top: 0px;
+	height: 30px;
+	text-align: center;
+	font-family: verdana, helvetic, arial, sans-serif;
+	font-size: 16px;
+	background: #202020;
+}
+
+a.sub_menu_option {
+	position: relative;
+	padding-left: 76px;
+	padding-right: 76px;
+	top: 6px;
+	color: #d0d0d0;
+	font-family: verdana, helvetica, arial, sans-serif;
+}
+
+#page_content {
+	position: relative;
+	background: #ffb806;
+	width: 100%;
+	top: 0px;
+	margin: auto;
+	padding: 10px;
+	font-family: verdana, helvetica, arial, sans-serif;
+}
+
+#limit {
+	position: relative;
+}
+
+span.filter_menu {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#rankings {
+	position: relative;
+	width: 100%;
+	margin: auto;
+	border: 1px solid black;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+th {
+	background: #c0c0c0;
+	border: none;
+	text-align: left;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+th.stats_cell {
+	padding-left: 20px;
+}
+
+th.rank_cell {
+	text-align: center;
+}
+
+tr {
+	background: #e0e0e0
+}
+
+tr.altrow {
+	background: #d4d4d4;
+}
+
+tr.inplayoffrow {
+	background: #ff5252;
+}
+
+tr.outplayoffrow {
+	background: #ffadad;
+}
+
+td {
+	border: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+td.rank_cell {
+	text-align: right;
+}
+
+td.name_cell {
+	text-align: left;
+}
+
+td.stats_cell {
+	padding-left: 20px;
+}
+
+a.name_cell {
+	color: #000000
+}
+
+#page_footer {
+	height: 30px;
+	word-spacing: 100px;
+	text-align: center;
+	font-size: 18px;
+	padding-top: 5px;
+	color: #d0d0d0
+}
+
+a.footer {
+	text-decoration: underline;
+	color: #d0d0d0
+}

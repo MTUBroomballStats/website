@@ -1,0 +1,194 @@
+<html>
+<head>
+	<link rel="shortcut icon" href="icon3.png" type="image/png">
+	<title>Ranking Methodology</title>
+	<!-- TODO: Meta -->
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-48515854-1', 'mtubroomballstats.com');
+	  ga('send', 'pageview');
+
+	</script>
+	<script src="scripts.js"></script>
+</head>
+
+<body>
+	<div id="page_container">
+		<div id="page_header">
+			<div id="logo">
+				<a href="index.py" id="templogo">Ranking Methodology</a>
+			</div>
+		</div>
+			
+		<!-- Page Content -->
+		<div id="page_content">
+			<a href="index.py">Return Home</a>
+			<p>
+			The rankings are computed through a system called the Bradley-Terry
+			model, which is the same model used to compute the
+			<a href="http://www.collegehockeynews.com/info/?d=krach">KRACH
+			ratings</a> for college hockey
+			(<a href="http://elynah.com/tbrw/tbrw.cgi?krach">details</a>). While
+			this model is well-studied and very accurate at representing past
+			results, there are a few problems with its application to Broomball
+			at Michigan Tech, which are solved through the following
+			modifications to the Bradley-Terry rating system.
+			</p>
+
+			<h3>Problem #1</h3>
+			<p>
+			Bradley-Terry only works within connected graphs; that is, when
+			you can say A played B, who played C, who played D... in such a way
+			that every team to be compared is included. This obviously is not
+			the case in Broomball until playoffs have been totally completed.
+			</p>
+
+			<h4>Solution</h4>
+			<p>
+			Instead of apply the Bradley-Terry model to teams, it is applied to
+			players. For every real game played between teams, the model treats
+			it as a set of games between every possible matchup between the
+			individual player participants. In this way, every player since 2005
+			is connected to every other player since 2005 through a chain of "A
+			played B, who played C, who played D...". This allows all players to
+			be ranked against each other. Then team ratings are simply the
+			arithmetic mean of their players.
+			</p>
+
+			<h3>Problem #2</h3>
+			<p>
+			A team of all bad players with a single excellent player will appear
+			to be a mediocre team through a simple arithmetic mean of its
+			players, when in reality, a bad team with a single great player will
+			only be slightly better than without that player.
+			</p>
+
+			<h4>Solution</h4>
+			<p>
+			Rather than a straight average of its players' ratings, each
+			player's rating is weighted by 10 raised to the power of the
+			absolute value its z-score, relative to the straight average of the
+			team's players. This attenuates the effect of large outliers without
+			excising them from the calculations entirely.
+			</p>
+
+			<h3>Problem #3</h3>
+			<p>
+			Any undefeated player will have an infinite rating.
+			</p>
+
+			<h4>Solution</h4>
+			<p>
+			Fractional wins are awarded based on margin of victory, which means
+			a player is only truly "undefeated" if they have an infinte margin
+			of victory. This process is described in more detail under
+			Problem #4.
+			</p>
+
+			<h3>Problem #3</h3>
+			<p>
+			Bradley-Terry does not take margin of victory into account. In
+			Broomball, this is not a good thing because margin of victory is
+			generally a good indicator of the relative skill difference, and
+			there should be rewards in the rankings for beating a team by a wide
+			margin instead of squeaking by in overtime.
+			</p>
+
+			<h4>Solution</h4>
+			<p>
+			Players are awarded fractional "wins" derived according to the
+			margin of victory. On the flip side, the losing players also receive
+			fractional "wins" such that a total of one victory is given for any
+			individual matchup. The exact formula used to calculate these
+			victory points can be found
+			<a href="http://www.theonlycolors.com/2010/6/9/1508422/margin-aware-bradley-terry-yet">
+			here</a>. The k value I chose is 2.3, which means that a 2-goal
+			margin equates to 0.73 "wins" for the winner and 0.27 "wins" for the
+			loser. A 4-goal margin is worth 0.88 "wins", a 6-goal margin is
+			worth 0.95 "wins", and a 10-goal margin is worth 0.993 "wins".
+			</p>
+
+			<h3>Problem #5</h3>
+			<p>
+			While the rating system allows players from all recorded Broomball
+			seasons since 2005 to be ranked together, inter-generational
+			rankings are heavily skewed toward players from older generations.
+			This is because each player has a single rating computed from all
+			games played. Suppose player A played broomball from 2008 to 2012
+			and player B played from 2012 to 2016. Player B is now one of the
+			best Broomball players at Tech, but started off as an inexperienced
+			freshman. Player B now has many quality wins from his years playing
+			Broomball at a rating to prove it. However, player A played B in
+			2012 and easily beat him because of his inexperience. Now player A
+			gets the big ratings bump from beating a very good player when in
+			reality player B was a bad player when that game occurred. Similarly
+			player B's rating will likely always be lower than player A's
+			not only because player B lost to player A, but also because most of
+			player B's classmates also lost to most of player B's classmates,
+			meaning that even though player B may have beaten many of his
+			classmates in later years, the entire generation is overall ranked
+			lower than player A's generation. This is because Bradley-Terry
+			assumes that there is no change in player skill over time. This
+			assumption causes these inaccuraces to build up over time, resulting
+			in players from 2005 always being ranked much higher than current
+			players.
+			</p>
+
+			<h4>Solution</h4>
+			<p>
+			Each player is given a different rating for each year, which is 
+			computed from all matchups that occurred during that year or the
+			preceding years. When computing ratings from the list of matchups,
+			the opponent's rating from that year is used in place, ensuring that
+			there is no effect from years to follow on that matchup. This
+			removes the bump to older players' ratings from beating younger
+			players, but does nothing to address the depression to younger
+			players' ratings.
+			</p>
+			<p>
+			To solve the rating decay problem, an exponential regression
+			analysis is run on the averages of all players for each season. It
+			was determined experimentally that the correlation coefficient for
+			this regression is typically greater than 0.99 (0.9985 for seasons
+			2005 to 2016), making it useful for predictions and providing
+			further evidence for a systemic bias against younger players. The
+			exponential regression curve is then used to generate adjustment
+			factors for each season such that when all player ratings are
+			divided by the relevant season's adjustment factor, the average 
+			rating for each season is near 100. However, using the regression
+			curve to predict the adjustment factor rather than artificially
+			forcing each season's average to be 100 allows for small random
+			differences to occur between years as certain years may have overall
+			better players than other years.
+			</p>
+
+			<h3>Problem #6</h3>
+			<p>
+			Player ratings are based on the total of that player's body of work.
+			This can cause some inaccuracies in ratings for the current year if
+			a good player always played on bad teams for whatever reason. Then,
+			if a number of these good players from bad teams got together their
+			senior year and had a really great team, that team could never
+			overcome the effect of the previous years of broomball dragging
+			their rating down even if they were one of the best teams in
+			broomball that year.
+			</p>
+
+			<h4>Solution</h4>
+			<p>
+			Matchups are weighted by the formula (cy - fy + 1) where cy is the
+			current year and fy is the first year the player played broomball.
+			This allows a player's rating to reflect his growth in skill over
+			time and places emphasis on the current broomball season.
+			</p>
+			<a href="index.py">Return Home</a>
+		</div>
+	</div>
+</body>
+
+</html>
